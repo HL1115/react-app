@@ -1,18 +1,56 @@
-import React,{Fragment} from 'react';
+import React,{Fragment,Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // 函数声明组件
-function ShowTime(props){
-    console.log(props);
-    return (<Fragment>
-                <div>{props.name}{props.age}</div>
+// function ShowTime(props){
+//     console.log(props);
+//     return (<Fragment>
+//                 <div>{props.name}{props.age}</div>
+//                 <div>
+//                     {new Date().toLocaleString()}
+//                 </div>
+//             </Fragment>
+//         )
+// }
+class ShowTime extends Component{
+    constructor(){
+        super();
+        this.state = {
+            time: new Date().toLocaleString(),
+            a: 100,
+            b: 200
+        }
+        setInterval(()=>{
+            this.setState({
+                time: new Date().toLocaleString()
+            })
+        },1000)
+    }
+    render(){
+        var {name,age} = this.props;
+        return (
+            <Fragment>
+                {/* 条件渲染 */}
+                {name.length>5?<div>姓名：{name}</div>:''}
+                {name.length>5&&<div>姓名：{name}</div>}
+                
+                
+                <div>{this.state.time}</div>
+                {/* 循环渲染 */}
                 <div>
-                    {new Date().toLocaleString()}
+                    {
+                        age.map((item,index)=>{
+                            if(index%2 === 0){
+                                return <p key={index}>{item}</p>
+                            }
+                        })
+                    }
                 </div>
             </Fragment>
         )
+    }
 }
-var num = 100;
+var num = [1,2,3,4,5];
 ReactDOM.render(
     <ShowTime age={num} name="zhangsan"/>,
     document.getElementById('root')
