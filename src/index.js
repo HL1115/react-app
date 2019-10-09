@@ -1,13 +1,20 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
+// 函数声明组件
 function ShowTime(props){
     console.log(props);
-    return <div>{props.name}{new Date().toLocaleString()}</div>
+    return (<Fragment>
+                <div>{props.name}{props.age}</div>
+                <div>
+                    {new Date().toLocaleString()}
+                </div>
+            </Fragment>
+        )
 }
+var num = 100;
 ReactDOM.render(
-    <ShowTime age="20" name="zhangsan"/>,
+    <ShowTime age={num} name="zhangsan"/>,
     document.getElementById('root')
 )
 
