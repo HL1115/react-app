@@ -46,7 +46,7 @@ function render(obj,container){
 }
 render(obj,document.getElementById('root'));
 
-
+console.log('1');
 // var ele = <h1 class="tit">hello <p>react</p></h1>;
 // var ele = React.createElement(
 //     'h1',
