@@ -1,6 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
+function ShowTime(props){
+    console.log(props);
+    return <div>{props.name}{new Date().toLocaleString()}</div>
+}
+ReactDOM.render(
+    <ShowTime age="20" name="zhangsan"/>,
+    document.getElementById('root')
+)
+
+
+
+
+
+// 显示当前系统时间
+// function showTime(){
+//     var ele = <div>
+//                 <p>当前时间是：</p>
+//                 <div>{new Date().toLocaleString()}</div>;
+//             </div>;
+//     ReactDOM.render(
+//         ele,
+//         document.querySelector('#root')
+//     );
+// } 
+// showTime();
+// setInterval(showTime,1000);
+
+
+
+
+
 // react技术栈
 // jsx语法
 // var ele = <h1 class="tit">hello <p>react</p></h1>;
