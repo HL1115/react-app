@@ -12,29 +12,55 @@ import './index.css';
 //             </Fragment>
 //         )
 // }
+
+// 类定义组件
+class Person{
+    say(){
+
+    }
+}
 class ShowTime extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             time: new Date().toLocaleString(),
             a: 100,
             b: 200
         }
-        setInterval(()=>{
+        console.log('constructor')
+        setTimeout(()=>{
             this.setState({
                 time: new Date().toLocaleString()
             })
         },1000)
     }
+    shouldComponentUpdate(){
+        if(this.state.a>10){
+            return true;
+        }
+        return false;
+    }
+    componentDidUpdate(preProps,preState,data){
+        console.log('didupdate');
+        console.log(preState)
+        console.log(this.state.time)
+    }
+    getSnapshotBeforeUpdate(){
+        console.log('getSnapshot');
+
+        return {name: this.state.a}
+    }
+    componentDidMount(){
+        console.log('didmount');
+    }
     render(){
+        console.log('render');
         var {name,age} = this.props;
         return (
             <Fragment>
                 {/* 条件渲染 */}
                 {name.length>5?<div>姓名：{name}</div>:''}
                 {name.length>5&&<div>姓名：{name}</div>}
-                
-                
                 <div>{this.state.time}</div>
                 {/* 循环渲染 */}
                 <div>
