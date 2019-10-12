@@ -6,7 +6,10 @@ export default class Todoing extends Component {
         return (
             <ul>
                 {
-                    todo.map((item,idx)=><li key={idx}>{item}</li>)
+                    todo.map((item,idx)=>
+                        <li key={idx}>
+                            {item}---<button onClick={()=>this.props.del(idx)}>删除</button>
+                        </li>)
                 }
             </ul>
         )

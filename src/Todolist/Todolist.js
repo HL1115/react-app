@@ -15,11 +15,19 @@ export default class Todolist extends Component {
             todo: [...this.state.todo,data]
         })
     }
+    delItem = (idx)=>{
+        // console.log(idx);
+        let todo = [...this.state.todo];
+        todo.splice(idx,1);
+        this.setState({
+            todo: todo
+        })
+    }
     render() {
         return (
             <div>
                 <Todoinput add={this.addItem}/>
-                <Todoing todo={this.state.todo}/>
+                <Todoing del={this.delItem} todo={this.state.todo}/>
             </div>
         )
     }
