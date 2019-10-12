@@ -1,5 +1,6 @@
 import React,{Fragment,Component} from 'react';
-class ShowTime extends Component{
+// 类定义组件
+export default class ShowTime extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -55,4 +56,8 @@ class ShowTime extends Component{
         )
     }
 }
-export default ShowTime;
+// 默认导出：只能导出一次，被引入时可以重命名
+// export default ShowTime;
+
+// 命名导出：可以导出多个，被引入时与导出的名一致
+// export {ShowTime};
