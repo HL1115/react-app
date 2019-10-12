@@ -2,6 +2,7 @@ import React,{Fragment,Component} from 'react';
 import ReactDOM from 'react-dom';
 import ShowTime from './Showtime';
 import './index.css';
+import Todolist from './Todolist/Todolist';
 // 函数声明组件
 // function ShowTime(props){
 //     console.log(props);
@@ -19,11 +20,18 @@ import './index.css';
 // 父组件---->子组件：调用子组件时添加属性，子组件通过props拿到传递的数据
 // 子组件---->父组件：
 
-var num = [1,2,3,4,5];
+
 ReactDOM.render(
-    <ShowTime age={num} name="zhangsan"/>,
+    <Todolist/>,
     document.getElementById('root')
 )
+
+
+// var num = [1,2,3,4,5];
+// ReactDOM.render(
+//     <ShowTime age={num} name="zhangsan"/>,
+//     document.getElementById('root')
+// )
 
 
 
