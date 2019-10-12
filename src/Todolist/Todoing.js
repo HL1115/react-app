@@ -6,7 +6,7 @@ export default class Todoing extends Component {
         return (
             <ul>
                 {
-                    todo.map(item=><li>{item}</li>)
+                    todo.map((item,idx)=><li key={idx}>{item}</li>)
                 }
             </ul>
         )

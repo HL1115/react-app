@@ -9,10 +9,13 @@ export default class Todolist extends Component {
             todo:[1,2,3]
         }
     }
+    addItem(){
+        console.log(123);
+    }
     render() {
         return (
             <div>
-                <Todoinput />
+                <Todoinput add={this.addItem}/>
                 <Todoing todo={this.state.todo}/>
             </div>
         )
