@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 
 export default class Todoinput extends Component {
-    constructor(){
-        super();
-        this.handleInput = this.handleInput.bind(this);
-    }
-    handleInput(e){
+    // constructor(){
+    //     super();
+        // this.handleInput = this.handleInput.bind(this);
+    // }
+    handleInput = (e)=>{
+        // 绑定this，事件处理函数写成箭头函数，或者用bind
         if(e.keyCode === 13){
-            console.log(e.target.value);
-            this.props.add();
+            this.props.add(e.target.value);
         }
     }
     render() {

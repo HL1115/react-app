@@ -9,8 +9,11 @@ export default class Todolist extends Component {
             todo:[1,2,3]
         }
     }
-    addItem(){
-        console.log(123);
+    addItem = (data)=>{
+        // this.state.todo.push(data);
+        this.setState({
+            todo: [...this.state.todo,data]
+        })
     }
     render() {
         return (
