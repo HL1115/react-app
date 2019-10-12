@@ -16,7 +16,6 @@ export default class Todolist extends Component {
         })
     }
     delItem = (idx)=>{
-        // console.log(idx);
         let todo = [...this.state.todo];
         todo.splice(idx,1);
         this.setState({
