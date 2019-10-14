@@ -30,7 +30,8 @@ export default class Todoinput extends Component {
     render() {
         return (
             <div className={this.state.b+this.state.c>10?'box':''}>
-                <input name="a" onChange={this.handleChange} onKeyDown={this.handleInput} type="text"/>
+                <label htmlFor="inp">请输入第一个数：</label>
+                <input id="inp" name="a" onChange={this.handleChange} onKeyDown={this.handleInput} type="text"/>
                 +
                 <input name="b" onChange={this.handleChange} value={this.state.b} onKeyDown={this.handleInput} type="text"/>
                 +
@@ -41,7 +42,11 @@ export default class Todoinput extends Component {
                 {/* 以下两种形式，新版本建议第二种 */}
                 <input ref="a" type="text"/>
                 <input ref={(inp)=>{this.inp=inp}} type="text"/>
-                <button className="btn" onClick={()=>{console.log(this.inp.value)}}>提交</button>
+                <button 
+                    style={ {color: 'red',fontSize: 100} }
+                    onClick={()=>{console.log(this.inp.value)}}>
+                    提交
+                </button>
             </div>
         )
     }
