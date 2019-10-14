@@ -50,8 +50,6 @@ export default class Todolist extends Component {
         // },()=>{
         //     console.log(this.state.todo)
         // })
-
-
     }
     render() {
         return (

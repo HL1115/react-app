@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 
 export default class Todoing extends Component {
     render() {
@@ -14,4 +15,11 @@ export default class Todoing extends Component {
             </ul>
         )
     }
+}
+Todoing.propTypes = {
+    todo: PropTypes.array,
+    del: PropTypes.func
+}
+Todoing.defaultProps = {
+    todo: [1,2,3,4,4]
 }
