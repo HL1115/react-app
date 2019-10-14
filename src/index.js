@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ShowTime from './Showtime';
 import './index.css';
 import Todolist from './Todolist/Todolist';
+import Request from './Request';
 // 函数声明组件
 // function ShowTime(props){
 //     console.log(props);
@@ -22,7 +23,7 @@ import Todolist from './Todolist/Todolist';
 
 
 ReactDOM.render(
-    <Todolist/>,
+    <Request/>,
     document.getElementById('root')
 )
 
