@@ -20,21 +20,35 @@ export default class Todoinput extends Component {
     }
     handleChange = (e)=>{
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: parseInt(e.target.value===''?0:e.target.value)
         })
+    }
+    componentDidMount(){
+        console.log(this.refs.a);
+        this.refs.a.focus();
     }
     render() {
         return (
             <div>
-                <input name="a" onChange={this.handleChange} value={this.state.a} onKeyDown={this.handleInput} type="text"/>
+                <input ref='a' onKeyDown={this.handleInput} type="text"/>
                 +
                 <input name="b" onChange={this.handleChange} value={this.state.b} onKeyDown={this.handleInput} type="text"/>
                 +
                 <input name="c" onChange={this.handleChange} value={this.state.c} onKeyDown={this.handleInput} type="text"/>
                 =
-                <p></p>
-                <button>提交</button>
+                <p>{this.state.a+this.state.b+this.state.c}</p>
+                {/* 非受控组件:一次性获取或处理表单元素的值 */}
+                <input ref={(inp)=>{this.inp=inp}} type="text"/>
+                <button onClick={()=>{console.log(this.inp.value)}}>提交</button>
+
             </div>
         )
     }
 }
+// 受控组件：
+// 1、给input标签添加value属性，赋值为state的值
+// 2、给input标签绑定onChange事件，
+// 在事件处理函数中setState
+// 3、一个事件处理函数控制多个表单元素时，
+// 给input标签加上name属性,事件处理函数中写：
+// setState({[e.target.name]:e.target.value})
