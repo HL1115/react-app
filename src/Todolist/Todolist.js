@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Todoinput from './Todoinput'
 import Todoing from './Todoing'
-
+import './todo.css';
 export default class Todolist extends Component {
     constructor(){
         super();

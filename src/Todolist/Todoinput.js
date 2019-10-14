@@ -29,8 +29,8 @@ export default class Todoinput extends Component {
     }
     render() {
         return (
-            <div>
-                <input ref='a' onKeyDown={this.handleInput} type="text"/>
+            <div className={this.state.b+this.state.c>10?'box':''}>
+                <input name="a" onChange={this.handleChange} onKeyDown={this.handleInput} type="text"/>
                 +
                 <input name="b" onChange={this.handleChange} value={this.state.b} onKeyDown={this.handleInput} type="text"/>
                 +
@@ -38,9 +38,10 @@ export default class Todoinput extends Component {
                 =
                 <p>{this.state.a+this.state.b+this.state.c}</p>
                 {/* 非受控组件:一次性获取或处理表单元素的值 */}
+                {/* 以下两种形式，新版本建议第二种 */}
+                <input ref="a" type="text"/>
                 <input ref={(inp)=>{this.inp=inp}} type="text"/>
-                <button onClick={()=>{console.log(this.inp.value)}}>提交</button>
-
+                <button className="btn" onClick={()=>{console.log(this.inp.value)}}>提交</button>
             </div>
         )
     }
