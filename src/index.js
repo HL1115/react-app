@@ -10,19 +10,23 @@ import Parent from './Context/Parent'
 // 2、在根组件import Provider，并配置Provider，加上value属性
 // 3、在需要获取数据的组件，import Consumer并配置Consumer
 // Consumer组件里是个函数，函数的参数是传过来的value值
-
+import Hoc from './Hoc/Hoc';
 import {con,con2} from './Context/Context'
 let id = 1234;
 ReactDOM.render(
-    <con.Provider value={id}>
-        <div>ddd</div>
-        
-        <con2.Provider value='aaaa'>
-            <Parent />
-        </con2.Provider>
-    </con.Provider>,
+    <Hoc/>,
     document.getElementById('root')
 )
+// ReactDOM.render(
+//     <con.Provider value={id}>
+//         <div>ddd</div>
+        
+//         <con2.Provider value='aaaa'>
+//             <Parent />
+//         </con2.Provider>
+//     </con.Provider>,
+//     document.getElementById('root')
+// )
 // 函数声明组件
 // function ShowTime(props){
 //     console.log(props);
