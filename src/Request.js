@@ -19,7 +19,6 @@ export default class Request extends Component {
             })
     }
     render() {
-        
         return (
             <div>
                 <h1>数据请求：</h1>
