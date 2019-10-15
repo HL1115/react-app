@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // 数据请求：Axios
 import Axios from 'axios';
-
+// import {fetch} from 'whatwg-fetch';
 export default class Request extends Component {
     constructor(){
         super();
@@ -10,13 +10,24 @@ export default class Request extends Component {
         }
     }
     componentDidMount() {
-        Axios.get('https://api.apiopen.top/musicRankingsDetails?type=1')
+        console.log(fetch)
+        let url = 'https://api.apiopen.top/musicRankingsDetails?type=1'
+        // 默认是get请求，可配置第二个参数，配置请求的信息
+        fetch(url,{method:'post'})
+            .then((res)=>res.json())
             .then((res)=>{
                 console.log(res);
                 this.setState({
-                    data: res.data.result
+                    data: res.result
                 })
             })
+        // Axios.get('https://api.apiopen.top/musicRankingsDetails?type=1')
+        //     .then((res)=>{
+        //         console.log(res);
+        //         this.setState({
+        //             data: res.data.result
+        //         })
+        //     })
     }
     render() {
         return (
