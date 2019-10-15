@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 let url = 'https://api.apiopen.top/musicRankingsDetails?type=1';
-function hoc(Com,url){
+function hoc(Com,url,title){
     class Fetch extends Component{
         constructor(){
             super();
@@ -19,7 +19,11 @@ function hoc(Com,url){
                 })
         }
         render(){
-            return <Com data={this.state.data}/>
+            return (<div>
+                    <p>{title}</p>
+                    <Com {...this.props} data={this.state.data}/>
+                </div>
+            )
         }
     }
     return Fetch;
@@ -28,9 +32,13 @@ class Music extends Component{
     render(){
         return (
             <ul>
+                <h1>{this.props.a}</h1>
                 {
                     this.props.data.map(
-                        (item)=><li>{item.title}</li>
+                        (item)=><li>
+                                <p>{item.title}</p>
+                                <p>{item.author}</p>
+                            </li>
                     )
                 }
             </ul>
@@ -50,13 +58,15 @@ class Music2 extends Component{
         )
     }
 }
-let Mymusic = hoc(Music,url);
-let Mymusic2 = hoc(Music2,url);
+
+let Mymusic = hoc(Music,url,'音乐');
+let Mymusic2 = hoc(Music2,url,'新闻');
 export default class Hoc extends Component {
     render() {
         return (
             <div>
-               <Mymusic/> 
+               <Mymusic a='aa' b='bb'/> 
+               <Mymusic2/> 
                <Mymusic2/> 
             </div>
         )
