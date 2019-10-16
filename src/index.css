@@ -1,4 +1,7 @@
-/* .active{
+/* 在CSS文件中引入antd的css文件 */
+@import '~antd/dist/antd.css';
+
+/* .hoc .active{
     width: 500px;
     height: 500px;
     background: red;
