@@ -14,9 +14,10 @@ import Hoc from './Hoc/Hoc';
 
 import ParentPortal from './Portal/ParentPortal';
 import {con,con2} from './Context/Context'
+import App from './App';
 let id = 1234;
 ReactDOM.render(
-    <ParentPortal/>,
+    <App/>,
     document.getElementById('root')
 )
 // ReactDOM.render(
