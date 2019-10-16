@@ -11,10 +11,12 @@ import Parent from './Context/Parent'
 // 3、在需要获取数据的组件，import Consumer并配置Consumer
 // Consumer组件里是个函数，函数的参数是传过来的value值
 import Hoc from './Hoc/Hoc';
+
+import ParentPortal from './Portal/ParentPortal';
 import {con,con2} from './Context/Context'
 let id = 1234;
 ReactDOM.render(
-    <Hoc/>,
+    <ParentPortal/>,
     document.getElementById('root')
 )
 // ReactDOM.render(

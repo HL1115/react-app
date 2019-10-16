@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 let url = 'https://api.apiopen.top/musicRankingsDetails?type=1';
+function getDisplayName(Com){
+    return Com.displayName || Com.name || 'Component';
+}
 function hoc(Com,url,title){
     class Fetch extends Component{
         constructor(){
@@ -21,11 +24,13 @@ function hoc(Com,url,title){
         render(){
             return (<div>
                     <p>{title}</p>
+                    {/* 传递父组件的属性给子组件 */}
                     <Com {...this.props} data={this.state.data}/>
                 </div>
             )
         }
     }
+    Fetch.displayName = `Fetch(${getDisplayName(Com)})`;
     return Fetch;
 }
 class Music extends Component{
