@@ -30,19 +30,23 @@ export default class Todolist extends Component {
         // this.state.todo.push(data);
         this.setState({
             todo: [...this.state.todo,data]
+        },()=>{
+            localStorage.setItem('',JSON.stringify(this.state.todo))
         })
     }
     delItem = (idx)=>{
         // 1、不能直接改变或处理state，通过setState改变
-        let todo = [...this.state.todo];
-        todo.splice(idx,1);
+        
         // 2、setState是异步执行
         this.setState((state,props)=>{
+            // let todo = [...state.todo];
+            // todo.splice(idx,1);
             console.log(state.todo);
             return {
-                todo: todo
+                todo: state.filter((item,index)=>idx!==index)
             }
         })
+
         // 在setState里获取state可能会出错，不是你想要的值
         // 可以像上面那样，把第一个参数写成函数，解决该问题
         // this.setState({
