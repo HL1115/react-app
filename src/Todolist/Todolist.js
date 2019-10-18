@@ -43,7 +43,7 @@ export default class Todolist extends Component {
             // todo.splice(idx,1);
             console.log(state.todo);
             return {
-                todo: state.filter((item,index)=>idx!==index)
+                todo: state.todo.filter((item,index)=>idx!==index)
             }
         })
 
