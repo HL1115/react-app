@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import {Button} from 'antd';
 export default class Sider extends Component {
     render() {
@@ -8,15 +8,25 @@ export default class Sider extends Component {
             <ul style={style}>
                 <Button type="primary" block>按钮</Button>
                 <li>
-                    <Link to={
+                    <NavLink activeStyle={{background:'red',color:'#fff'}} to={
                         {pathname:'/hoc',
                         state:{id:100},
                         search:'?user=zhangsan'}
-                    }>Hoc</Link>
+                    }>Hoc</NavLink>
                 </li> 
                 <li>
-                    <Link to='/parent'>parent</Link>
+                    <NavLink activeStyle={{background:'red',color:'#fff'}} to='/parent'>parent</NavLink>
                 </li>
+                {
+                    [0,1,2,3,4].map((item)=>(
+                        <li key={item}>
+                            <NavLink activeStyle={
+                                {background:'red',
+                                color:'#fff'}
+                            } to={'/content/'+item}>帖子{item}</NavLink>
+                        </li>
+                    ))
+                }
             </ul>
         )
     }
