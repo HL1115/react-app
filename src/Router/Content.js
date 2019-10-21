@@ -4,7 +4,9 @@ export default function Content(props){
     console.log(props)
     return (
         <div>
-            Content{props.match.params.id}
+            {props.children}
+            Content
+            {/* {props.match.params.id} */}
         </div>
     )
 }

@@ -10,6 +10,12 @@ export default class App extends Component {
         return (
             <Router basename="/build">
                 <div>
+                    <Content>
+                        <h2>这是children的内容</h2>
+                        <ul>
+                            <li>1</li>
+                        </ul>
+                    </Content>
                     <Sider/>
                     <div style={
                         {float:'left',
@@ -18,10 +24,7 @@ export default class App extends Component {
                     }>
                     <Switch>
                         <Route exact path='/hoc' component={Hoc} />
-                            
-                        <Route path='/parent'>
-                            <Parent/>
-                        </Route>
+                        <Route path='/parent' component={Parent}/>
                         {/* <Redirect from='/old' to='/hoc'/> */}
                         <Route path='/old' render={()=><Redirect to='/hoc'/>}/>
                         <Route path='/content/:id' component={Content}/>
