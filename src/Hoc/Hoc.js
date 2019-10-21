@@ -67,7 +67,9 @@ class Music2 extends Component{
 let Mymusic = hoc(Music,url,'音乐');
 let Mymusic2 = hoc(Music2,url,'新闻');
 export default class Hoc extends Component {
+    
     render() {
+        console.log(this);
         return (
             <div>
                <Mymusic a='aa' b='bb'/> 

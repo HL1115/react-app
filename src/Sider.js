@@ -8,7 +8,11 @@ export default class Sider extends Component {
             <ul style={style}>
                 <Button type="primary" block>按钮</Button>
                 <li>
-                    <Link to='/hoc'>Hoc</Link>
+                    <Link to={
+                        {pathname:'/hoc',
+                        state:{id:100},
+                        search:'?user=zhangsan'}
+                    }>Hoc</Link>
                 </li> 
                 <li>
                     <Link to='/parent'>parent</Link>
