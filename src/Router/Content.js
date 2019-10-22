@@ -1,12 +1,26 @@
 import React from 'react';
 // 无状态组件
-export default function Content(props){
-    console.log(props)
-    return (
-        <div>
-            {props.children}
-            Content
-            {/* {props.match.params.id} */}
-        </div>
-    )
+export default class Content extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            data: []
+        }
+    }
+    componentDidMount(){
+        fetch('https://cnodejs.org/api/v1/topics?page=1')
+            .then((res)=>res.json())
+            .then((res)=>{
+                this.setState({
+                    data: res.data
+                });
+            })
+    }
+    render(){
+        return (
+            <div>
+                
+            </div>
+        )
+    }
 }
