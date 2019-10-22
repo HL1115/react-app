@@ -8,7 +8,8 @@ export default class Content extends React.Component{
         }
     }
     componentDidMount(){
-        fetch('https://cnodejs.org/api/v1/topics?page=1')
+        let page = this.props.match.params.id;
+        fetch('https://cnodejs.org/api/v1/topics?page='+page)
             .then((res)=>res.json())
             .then((res)=>{
                 this.setState({
@@ -19,7 +20,14 @@ export default class Content extends React.Component{
     render(){
         return (
             <div>
-                
+                {
+                    this.state.data.map((item)=>(
+                        <div key={item.id}>
+                            <h2>{item.title}</h2>
+                            <div dangerouslySetInnerHTML={{__html:item.content}}></div>
+                        </div>
+                    ))
+                }
             </div>
         )
     }

@@ -18,7 +18,7 @@ export default class Sider extends Component {
                     <NavLink activeStyle={{background:'red',color:'#fff'}} to='/parent'>parent</NavLink>
                 </li>
                 {
-                    [0,1,2,3,4].map((item)=>(
+                    [1,2,3,4,5,6,7,8].map((item)=>(
                         <li key={item}>
                             <NavLink activeStyle={
                                 {background:'red',
