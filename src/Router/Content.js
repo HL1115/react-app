@@ -6,6 +6,7 @@ export default class Content extends React.Component{
         this.state = {
             data: []
         }
+        
     }
     componentDidMount(){
         let page = this.props.match.params.id;
