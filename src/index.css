@@ -1,5 +1,21 @@
 /* 在CSS文件中引入antd的css文件 */
 @import '~antd/dist/antd.css';
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.header{
+    height: 50px;
+    background-color: #444;
+}
+.header header{
+    width: 1200px;
+    margin: 0 auto;
+}
+.header img{
+    width: 120px;
+}
 
 /* .hoc .active{
     width: 500px;
