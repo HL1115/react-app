@@ -27,5 +27,15 @@ body{
 /* content */
 .content{
     width: 1200px;
-    margin: 0 auto;
+    margin: 30px auto 0;
+}
+.left{
+    width: 900px;
+    float: left;
+}
+.right{
+    width: 270px;
+    float: right;
+    height: 500px;
+    background-color: red;
 }
