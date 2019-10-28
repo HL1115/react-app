@@ -42,7 +42,11 @@ import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
 // hook只能在函数组件内用
 // useState
 function Counter(){
+    // useState可以写多个,写在函数组件的最顶层，不能写在条件语句
     let [num,setNum] = useState(0);
+    let [str,setStr] = useState('a');
+    let [arr,setArr] = useState([]);
+
     function add(){
         // for(var i=0;i<10;i++){
             setNum((n)=>{
@@ -95,14 +99,19 @@ function ShowTime(){
     let [time,setTime] = useState(new Date().toLocaleString())
     // useEffect能代替componentDidMount和componentDidUpdate
     // 还能代替componentWillUnmount
+    // useEffect可以写多个,按需求分开
+    useEffect();
     useEffect(()=>{
         let id = setInterval(()=>{
+            console.log(1);
             setTime(new Date().toLocaleString())
-        })
+        },1000)
         return ()=>{
+            console.log('unmount')
             clearInterval(id)
         }
     },[])
+
     return <div>
         {time}
     </div>
