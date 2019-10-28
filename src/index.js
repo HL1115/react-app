@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{Component,useState} from 'react';
 import {render} from 'react-dom';
 
 // hooks(代替类组件的一些功能)
@@ -11,29 +11,47 @@ import {render} from 'react-dom';
 
 // 声明一个类组件（state是类组件特有的，只能在当前组件用，存储当前组件的数据）
 // 声明一个组件，点击按钮，实现加1的功能
-class Counter extends Component{
-    constructor(){
-        super();
-        this.state={
-            num:0
-        }
-    }
-    add = ()=>{
-        this.setState({
-            num: this.state.num+1
-        })
-    }
-    render(){
-        return (
-            <div>
-                <p>{this.state.num}</p>
-                <button onClick={this.add}>点击按钮+1</button>
-            </div>
-        )
-    }
+// class Counter extends Component{
+//     constructor(){
+//         super();
+//         this.state={
+//             num:0
+//         }
+//     }
+//     add = ()=>{
+//         // Object.assign({},{name:1},{name:2})
+//         // for(var i=0;i<10;i++){
+//             this.setState((state)=>{
+//                 return {
+//                     num: state.num + 1
+//                 }
+//             })
+//         // }
+//     }
+//     render(){
+//         return (
+//             <div>
+//                 <p>{this.state.num}</p>
+//                 <button onClick={this.add}>点击按钮+1</button>
+//             </div>
+//         )
+//     }
     
-}
+// }
 
+// hook只能在函数组件内用
+function Counter(){
+    let [num,setNum] = useState(0);
+    function add(){
+        setNum(num+1);
+    }
+    return (
+        <div>
+            <p>{num}</p>
+            <button onClick={add}>点击按钮+1</button>
+        </div>
+    )
+}
 
 render(
     <Counter/>,
