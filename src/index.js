@@ -95,21 +95,26 @@ function Counter(){
 //     }
 // }
 
+
+
 function ShowTime(props){
     let [time,setTime] = useState(0)
-    let [topic,setTopic] = useState([])
+    // let [topic,setTopic] = useState([])
     // useEffect能代替componentDidMount和componentDidUpdate
     // 还能代替componentWillUnmount
     // useEffect可以写多个,按需求分开
     let page = props.match.params.page
-    useEffect(()=>{
-        fetch('https://cnodejs.org/api/v1/topics?page='+page)
-            .then(res=>res.json())
-            .then(res=>{
-                setTopic(res.data);
-                console.log(res);
-            })
-    },[page]);
+    // useEffect(()=>{
+    //     fetch('https://cnodejs.org/api/v1/topics?page='+page)
+    //         .then(res=>res.json())
+    //         .then(res=>{
+    //             setTopic(res.data);
+    //             console.log(res);
+    //         })
+    // },[page]);
+
+    let topic = useFetch('https://cnodejs.org/api/v1/topics?page='+page,[page]);
+
     useEffect(()=>{
         let id = setInterval(()=>{
             setTime( time=>time+1 )
@@ -129,7 +134,20 @@ function ShowTime(props){
     </div>
 }
 
+// 自定义hook
+// HOC高阶组件
 
+function useFetch(url,d){
+    let [data,setData] = useState([]);
+    useEffect(()=>{
+        fetch(url)
+            .then(res=>res.json())
+            .then(res=>{
+                setData(res.data)
+            })
+    },[...d])
+    return data;
+}
 
 render(
     <Router>
