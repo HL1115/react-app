@@ -1,4 +1,4 @@
-import React,{Component,useState} from 'react';
+import React,{Component,useState,useEffect} from 'react';
 import {render} from 'react-dom';
 
 // hooks(代替类组件的一些功能)
@@ -40,10 +40,15 @@ import {render} from 'react-dom';
 // }
 
 // hook只能在函数组件内用
+// useState
 function Counter(){
     let [num,setNum] = useState(0);
     function add(){
-        setNum(num+1);
+        // for(var i=0;i<10;i++){
+            setNum((n)=>{
+                return n+1
+            });
+        // }
     }
     return (
         <div>
@@ -53,7 +58,39 @@ function Counter(){
     )
 }
 
+// function ShowTime(){
+
+// }
+class ShowTime extends Component{
+    constructor(){
+        super();
+        this.state = {
+            time: new Date().toLocaleString()
+        }
+    }
+    // didMount只执行一次
+    componentDidMount() {
+        this.id = setInterval(()=>{
+            this.setState({
+                    time: new Date().toLocaleString()
+                }
+            )
+        },1000)
+    }
+    componentDidUpdate(){
+
+    }
+    componentWillMount(){
+        clearInterval(this.id)
+    }
+    render(){
+        return <div>
+            {this.state.time}
+        </div>
+    }
+}
+
 render(
-    <Counter/>,
+    <ShowTime/>,
     document.getElementById('root')
 )
