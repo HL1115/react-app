@@ -95,17 +95,26 @@ function Counter(){
 //     }
 // }
 
-function ShowTime(){
-    let [time,setTime] = useState(new Date().toLocaleString())
+function ShowTime(props){
+    let [time,setTime] = useState(0)
+    let [topic,setTopic] = useState([])
     // useEffect能代替componentDidMount和componentDidUpdate
     // 还能代替componentWillUnmount
     // useEffect可以写多个,按需求分开
-    useEffect();
+    let page = props.match.params.page
+    useEffect(()=>{
+        fetch('https://cnodejs.org/api/v1/topics?page='+page)
+            .then(res=>res.json())
+            .then(res=>{
+                setTopic(res.data);
+                console.log(res);
+            })
+    },[page]);
     useEffect(()=>{
         let id = setInterval(()=>{
-            console.log(1);
-            setTime(new Date().toLocaleString())
+            setTime( time=>time+1 )
         },1000)
+
         return ()=>{
             console.log('unmount')
             clearInterval(id)
@@ -114,6 +123,9 @@ function ShowTime(){
 
     return <div>
         {time}
+        {
+            topic.map((item)=><p>{item.title}</p>)
+        }
     </div>
 }
 
@@ -124,11 +136,12 @@ render(
         <div>
             <ul>
                 <li><Link to='/counter'>Counter</Link></li>
-                <li><Link to='/showtime'>Showtime</Link></li>
+                <li><Link to='/showtime/1'>Showtime1</Link></li>
+                <li><Link to='/showtime/2'>Showtime2</Link></li>
             </ul>
             <div>
                 <Route path='/counter' component={Counter} />
-                <Route path='/showtime' component={ShowTime} />
+                <Route path='/showtime/:page' component={ShowTime} />
             </div>
         </div>
     </Router>,
