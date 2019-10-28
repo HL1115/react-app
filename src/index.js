@@ -1,6 +1,6 @@
 import React,{Component,useState,useEffect} from 'react';
 import {render} from 'react-dom';
-
+import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
 // hooks(代替类组件的一些功能)
 // 声明组件(两种方式)
 // 函数组件（无状态组件，没有生命周期，适合做UI组件）
@@ -61,36 +61,67 @@ function Counter(){
 // function ShowTime(){
 
 // }
-class ShowTime extends Component{
-    constructor(){
-        super();
-        this.state = {
-            time: new Date().toLocaleString()
-        }
-    }
-    // didMount只执行一次
-    componentDidMount() {
-        this.id = setInterval(()=>{
-            this.setState({
-                    time: new Date().toLocaleString()
-                }
-            )
-        },1000)
-    }
-    componentDidUpdate(){
+// class ShowTime extends Component{
+//     constructor(){
+//         super();
+//         this.state = {
+//             time: new Date().toLocaleString()
+//         }
+//     }
+//     // didMount只执行一次
+//     componentDidMount() {
+//         this.id = setInterval(()=>{
+//             this.setState({
+//                     time: new Date().toLocaleString()
+//                 }
+//             )
+//         },1000)
+//     }
+//     componentDidUpdate(){
 
-    }
-    componentWillMount(){
-        clearInterval(this.id)
-    }
-    render(){
-        return <div>
-            {this.state.time}
-        </div>
-    }
+//     }
+    
+//     componentWillUnmount(){
+//         clearInterval(this.id)
+//     }
+//     render(){
+//         return <div>
+//             {this.state.time}
+//         </div>
+//     }
+// }
+
+function ShowTime(){
+    let [time,setTime] = useState(new Date().toLocaleString())
+    // useEffect能代替componentDidMount和componentDidUpdate
+    // 还能代替componentWillUnmount
+    useEffect(()=>{
+        let id = setInterval(()=>{
+            setTime(new Date().toLocaleString())
+        })
+        return ()=>{
+            clearInterval(id)
+        }
+    },[])
+    return <div>
+        {time}
+    </div>
 }
 
+
+
 render(
-    <ShowTime/>,
+    <Router>
+        <div>
+            <ul>
+                <li><Link to='/counter'>Counter</Link></li>
+                <li><Link to='/showtime'>Showtime</Link></li>
+            </ul>
+            <div>
+                <Route path='/counter' component={Counter} />
+                <Route path='/showtime' component={ShowTime} />
+            </div>
+        </div>
+    </Router>,
     document.getElementById('root')
 )
