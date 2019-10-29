@@ -10,7 +10,7 @@ export default class Route extends Component {
                         let {path,component:Component} = this.props
                         let {pathname} = value.location;
                         if(path === pathname){
-                            return <Component />
+                            return <Component {...value}/>
                         }
                         return  null;
                     }
