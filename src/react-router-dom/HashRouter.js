@@ -5,14 +5,18 @@ export default class HashRouter extends Component {
     constructor(){
         super();
         this.state = {
-            location: window.location.hash.slice(1) || '/'
+            location: {
+                pathname: window.location.hash.slice(1) || '/'
+            }
         }
     }
     componentDidMount(){
         window.location.hash = window.location.hash.slice(1) || '/'
         window.addEventListener('hashchange',()=>{
             this.setState({
-                location: window.location.hash.slice(1)
+                location: {
+                    pathname: window.location.hash.slice(1)
+                } 
             })
         })
         // window.onhashchange = ()=>{
@@ -23,8 +27,16 @@ export default class HashRouter extends Component {
         // }
     }
     render() {
+        let value = {
+            location: this.state.location,
+            history:{
+                push:(path)=>{
+                    window.location.hash = path;
+                }
+            }
+        }
         return (
-            <Provider value={this.state}>
+            <Provider value={value}>
                 {
                     this.props.children
                 }

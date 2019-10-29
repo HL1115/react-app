@@ -9,7 +9,10 @@ ReactDOM.render(
         <div>
             <a href="#/home">首页</a>
             <a href="#/about">about</a>
+            <Route path='/home' component={Home}/>
+            <Route path='/about' component={About}/>
         </div>
+        
     </Router>,
     document.getElementById('root')
 
