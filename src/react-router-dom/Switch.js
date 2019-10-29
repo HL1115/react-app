@@ -13,7 +13,7 @@ export default class Switch extends Component {
 
                         for(var i=0;i<children.length;i++){
                             let reg = pathToReg(
-                                children[i].props.path,
+                                children[i].props.path||'',
                                 [],
                                 {end:children[i].props.exact||false}
                             )
