@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter as Router,Route,Link} from './react-router-dom';
+import {HashRouter as Router,Route,Switch,Link,Redirect} from './react-router-dom';
 import Home from './containers/Home';
 import About from './containers/About';
+import Nomatch from './containers/Nomatch';
 
 ReactDOM.render(
     <Router>
         <div>
-            <a href="#/home">首页</a>
-            <a href="#/about">about</a>
-            <Route path='/home' component={Home}/>
-            <Route path='/about' component={About}/>
+            <Link to="/home">首页</Link>
+            <Link to="/about">about</Link>
+            <Switch>
+                <Route exact path='/home' component={Home}/>
+                <Route path='/home/:id' component={Home}/>
+                <Route path='/about' component={About}/>
+                <Route path='/nomatch' component={Nomatch}/>
+                <Redirect to='/nomatch'/> 
+            </Switch>
+
         </div>
         
     </Router>,
