@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import store from '../store';
 export default class Todoinput extends Component {
+    constructor(){
+        super();
+        this.state = {
+            value: store.getState().changeValue
+        }
+    }
     addItem = (e)=>{
         if(e.keyCode === 13){
             let action = {
@@ -10,10 +16,16 @@ export default class Todoinput extends Component {
             store.dispatch(action);
         }
     }
+    // 2、监听state的变化，变化时执行当前组件的setState
+
+    handleChange = ()=>{
+        // 1、输入时派发action，改变store里的state
+        
+    }
     render() {
         return (
             <div>
-                <input onKeyDown={this.addItem} type="text"/>
+                <input onChange={this.handleChange} value={this.state.value} onKeyDown={this.addItem} type="text"/>
             </div>
         )
     }
