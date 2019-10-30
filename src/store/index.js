@@ -1,5 +1,5 @@
-import {creareStore} from 'redux';
+import {createStore} from 'redux';
 import todo from './reducer';
 
-let store = creareStore(todo);
+let store = createStore(todo);
 export default store;

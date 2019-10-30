@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-
+import Todoing from './Todoing'
+import Todoinput from './Todoinput'
 export default class Home extends Component {
     render() {
-        console.log(this.props)
         return (
             <div>
-                Home
+                <Todoinput/>
+                <Todoing/>
             </div>
         )
     }
