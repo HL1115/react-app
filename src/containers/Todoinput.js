@@ -17,10 +17,19 @@ export default class Todoinput extends Component {
         }
     }
     // 2、监听state的变化，变化时执行当前组件的setState
-
-    handleChange = ()=>{
+    componentDidMount() {
+        store.subscribe(()=>{
+            this.setState({
+                value: store.getState().changeValue
+            })
+        })
+    }
+    handleChange = (e)=>{
         // 1、输入时派发action，改变store里的state
-        
+        store.dispatch({
+            type: 'change_input_value',
+            value: e.target.value
+        })
     }
     render() {
         return (
