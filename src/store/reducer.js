@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
 let todos = [1,2,3];
+
 function todo(state=todos,action){
 
     switch (action.type) {
