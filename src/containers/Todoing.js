@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import store from '../store';
+import {DEL_ITEM} from '../actions/actionTypes';
 
 export default class Todoing extends Component {
     constructor(){
@@ -19,12 +20,21 @@ export default class Todoing extends Component {
     componentWillUnmount(){
         this.subid();
     }
+    delItem = (index)=>{
+        store.dispatch({
+            type: DEL_ITEM,
+            index
+        })
+    }
     render() {
         return (
             <ul>
                 {
                     this.state.todos.map((item,idx)=>(
-                        <li key={idx}>{item}</li>
+                        <li key={idx}>
+                            {item}----
+                            <button onClick={()=>{this.delItem(idx)}}>删除</button>
+                        </li>
                     ))
                 }
             </ul>

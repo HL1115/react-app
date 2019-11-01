@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import store from '../store';
+import {changeValue,addItem} from '../actions';
 export default class Todoinput extends Component {
     constructor(){
         super();
@@ -9,11 +10,11 @@ export default class Todoinput extends Component {
     }
     addItem = (e)=>{
         if(e.keyCode === 13){
-            let action = {
-                type: 'add_todo_item',
-                value: e.target.value
-            }
-            store.dispatch(action);
+            // let action = {
+            //     type: 'add_todo_item',
+            //     value: e.target.value
+            // }
+            store.dispatch(addItem(e.target.value));
         }
     }
     // 2、监听state的变化，变化时执行当前组件的setState
@@ -26,10 +27,7 @@ export default class Todoinput extends Component {
     }
     handleChange = (e)=>{
         // 1、输入时派发action，改变store里的state
-        store.dispatch({
-            type: 'change_input_value',
-            value: e.target.value
-        })
+        store.dispatch(changeValue(e.target.value))
     }
     render() {
         return (
