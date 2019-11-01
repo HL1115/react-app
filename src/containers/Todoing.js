@@ -1,36 +1,21 @@
 import React, { Component } from 'react'
 import store from '../store';
 import {DEL_ITEM} from '../actions/actionTypes';
+import {connect} from 'react-redux';
 
-export default class Todoing extends Component {
-    constructor(){
-        super();
-        this.state = {
-            todos: store.getState().todo
-        }
-    }
-    componentDidMount() {
-        this.subid = store.subscribe(()=>{
-            console.log('toding')
-            this.setState({
-                todos: store.getState().todo
-            })
-        })
-    }
-    componentWillUnmount(){
-        this.subid();
-    }
+class Todoing extends Component {
     delItem = (index)=>{
-        store.dispatch({
+        this.props.dispatch({
             type: DEL_ITEM,
             index
         })
     }
     render() {
+        console.log(this.props)
         return (
             <ul>
                 {
-                    this.state.todos.map((item,idx)=>(
+                    this.props.todos.map((item,idx)=>(
                         <li key={idx}>
                             {item}----
                             <button onClick={()=>{this.delItem(idx)}}>删除</button>
@@ -41,3 +26,11 @@ export default class Todoing extends Component {
         )
     }
 }
+
+let mapStateToProps = (state)=>{
+    return {
+        todos: state.todo
+    }
+}
+
+export default connect(mapStateToProps)(Todoing);
