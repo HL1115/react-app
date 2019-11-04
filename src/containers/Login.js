@@ -1,18 +1,28 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {logFetch} from '../actions';
+import Button from './Button';
 function Login(props){
-    function login(){
-        // redux-thunk允许dispatch一个函数，
-        // 在函数里可以执行异步的操作，函数的参数是dispatch
-        props.dispatch(logFetch());
-    }
+    // let newLog = bindActionCreators(
+    //     logFetch,
+    //     props.dispatch
+    // )
     return(
         <div>   
             <input type="text"/>
             <input type="password"/>
-            <button onClick={login}>登录</button>
+            <Button log={props.newLog}/>
         </div>
     )
 }
-export default connect()(Login);
+let mapStateToProps = (state)=>{}
+let mapDispatchToProps = (dispatch)=>{
+    return {
+        newLog:bindActionCreators(logFetch,dispatch)
+    }
+}
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Login);
