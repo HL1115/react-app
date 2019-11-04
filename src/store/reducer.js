@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {DEL_ITEM,ADD_TODO_ITEM,CHANGE_INPUT_VALUE} from '../actions/actionTypes';
+import {LOGIN_SUCCESS,DEL_ITEM,ADD_TODO_ITEM,CHANGE_INPUT_VALUE} from '../actions/actionTypes';
 
 
 let todos = [1,2,3];
@@ -29,7 +29,21 @@ function changeValue(state=inputValue,action){
     }
 }
 
+let userInfor = {
+    loginname: '',
+    score: 0
+}
+function login(state=userInfor,action){
+
+    switch (action.type) {
+        case LOGIN_SUCCESS:
+            return action.value;
+        default:
+            return state;
+    }
+}
+
 let reducer = combineReducers({
-    todo,changeValue
+    todo,changeValue,login
 })
 export default reducer;
