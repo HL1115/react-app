@@ -1,20 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {log} from '../actions';
+import {logFetch} from '../actions';
 function Login(props){
     function login(){
-        fetch('https://cnodejs.org/api/v1/user/alsotang')
-            .then(res=>res.json())
-            .then(res=>{
-                console.log(res)
-                let userInfor = {
-                    loginname: res.data.loginname,
-                    score: res.data.score
-                }
-                props.dispatch(log(userInfor))
-                // props.history.push('/');
-            })
-        
+        // redux-thunk允许dispatch一个函数，
+        // 在函数里可以执行异步的操作，函数的参数是dispatch
+        props.dispatch(logFetch());
     }
     return(
         <div>   
