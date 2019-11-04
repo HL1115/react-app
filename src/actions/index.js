@@ -19,3 +19,9 @@ export const changeValue = value=>(
         value
     }
 )
+export const log = (value)=>(
+    {
+        type: types.LOGIN_SUCCESS,
+        value
+    }
+)

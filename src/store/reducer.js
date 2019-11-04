@@ -37,6 +37,7 @@ function login(state=userInfor,action){
 
     switch (action.type) {
         case LOGIN_SUCCESS:
+            console.log(action)
             return action.value;
         default:
             return state;

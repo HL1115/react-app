@@ -1,11 +1,18 @@
 import React from 'react';
-
-export default function Login(){
+import {connect} from 'react-redux';
+import {log} from '../actions';
+function Login(props){
     function login(){
         fetch('https://cnodejs.org/api/v1/user/alsotang')
             .then(res=>res.json())
             .then(res=>{
-                console.log(res);
+                console.log(res)
+                let userInfor = {
+                    loginname: res.data.loginname,
+                    score: res.data.score
+                }
+                props.dispatch(log(userInfor))
+                // props.history.push('/');
             })
         
     }
@@ -17,3 +24,4 @@ export default function Login(){
         </div>
     )
 }
+export default connect()(Login);
