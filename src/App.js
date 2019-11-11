@@ -5,7 +5,7 @@ import Home from './container/Home';
 import Api from './container/Api';
 import About from './container/About';
 import Start from './container/Start';
-
+import Topic from './container/Topic';
 export default class App extends Component {
     render() {
         return (
@@ -19,7 +19,7 @@ export default class App extends Component {
                         <Route path='/start' component={Start}/>
                         <Route path='/api' component={Api}/>
                         <Route path='/about' component={About}/>
-                        
+                        <Route path='/topic/:id' component={Topic}/>
                     </div>
                     <div className="right">
 

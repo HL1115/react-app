@@ -1,50 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter as Router,Route,Switch,Link,Redirect} from 'react-router-dom';
-import Home from './containers/Home';
-import About from './containers/About';
-import Nomatch from './containers/Nomatch';
-import {Provider} from 'react-redux';
-import store from './store';
-import Login from './containers/Login';
+import App from './App';
+import './index.css';
+// 容器组件 / UI组件（展示组件）
+// 智能组件 / 木偶组件
 
+// 容器组件（container/pages）：逻辑，功能
+// UI组件（components）：写成函数组件，展示，返回React元素
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router>
-            <div>
-                <Link to="/">首页</Link>
-                <Link to="/about">about</Link>
-                <Link to="/login">登录</Link>
-                <Switch>
-                    <Route exact path='/' component={Home}/>
-                    <Route path='/home/:id' component={Home}/>
-                    <Route path='/about' component={About}/>
-                    <Route path='/login' component={Login}/>
-                    <Route path='/nomatch' component={Nomatch}/>
-                    <Redirect to='/nomatch'/> 
-                </Switch>
-
-            </div>
-            
-        </Router>
-    </Provider>,
+    <App/>,
     document.getElementById('root')
-
 )
-
-// ReactDOM.render(
-//     <Router>
-//         <div>
-//             <div>
-//                 <Link to='/home'>首页</Link>
-//                 <Link to='/about'>about</Link>
-//             </div>
-//             <div>
-//                 <Route path='/home' component={Home}/>
-//                 <Route path='/about' component={About}/>
-//             </div>
-//         </div>
-//     </Router>,
-//     document.getElementById('root')
-// )
