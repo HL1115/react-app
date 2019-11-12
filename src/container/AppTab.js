@@ -1,11 +1,12 @@
 import React from 'react';
 import { TabBar } from 'antd-mobile';
+import AppHome from './AppHome';
 
 export default class AppTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'home',
     };
   }
   render() {
@@ -13,7 +14,7 @@ export default class AppTab extends React.Component {
       <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
         <TabBar
           unselectedTintColor="#949494"
-          tintColor="#33A3F4"
+          tintColor="yellow"
           barTintColor="white"
         >
           <TabBar.Item
@@ -31,14 +32,14 @@ export default class AppTab extends React.Component {
               background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
             />
             }
-            selected={this.state.selectedTab === 'blueTab'}
+            selected={this.state.selectedTab === 'home'}
             onPress={() => {
               this.setState({
                 selectedTab: 'blueTab',
               });
             }}
           >
-            首页
+            <AppHome/>
           </TabBar.Item>
           <TabBar.Item
             icon={
