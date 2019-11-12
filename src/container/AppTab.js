@@ -6,50 +6,18 @@ export default class AppTab extends React.Component {
     super(props);
     this.state = {
       selectedTab: 'redTab',
-      hidden: false,
-      fullScreen: false,
     };
   }
-
-  renderContent(pageText) {
-    return (
-      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-        <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
-        <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              hidden: !this.state.hidden,
-            });
-          }}
-        >
-          Click to show/hide tab-bar
-        </a>
-        <a style={{ display: 'block', marginBottom: 600, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              fullScreen: !this.state.fullScreen,
-            });
-          }}
-        >
-          Click to switch fullscreen
-        </a>
-      </div>
-    );
-  }
-
   render() {
     return (
-      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
+      <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
           barTintColor="white"
-          hidden={this.state.hidden}
         >
           <TabBar.Item
-            title="Life"
+            title="首页"
             key="Life"
             icon={<div style={{
               width: '22px',
@@ -64,15 +32,13 @@ export default class AppTab extends React.Component {
             />
             }
             selected={this.state.selectedTab === 'blueTab'}
-            badge={1}
             onPress={() => {
               this.setState({
                 selectedTab: 'blueTab',
               });
             }}
-            data-seed="logId"
           >
-            {this.renderContent('Life')}
+            首页
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -89,18 +55,16 @@ export default class AppTab extends React.Component {
                 background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
               />
             }
-            title="Koubei"
+            title="商城"
             key="Koubei"
-            badge={'new'}
             selected={this.state.selectedTab === 'redTab'}
             onPress={() => {
               this.setState({
                 selectedTab: 'redTab',
               });
             }}
-            data-seed="logId1"
           >
-            {this.renderContent('Koubei')}
+            商城
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -127,12 +91,12 @@ export default class AppTab extends React.Component {
               });
             }}
           >
-            {this.renderContent('Friend')}
+            灵感
           </TabBar.Item>
           <TabBar.Item
             icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
             selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
-            title="My"
+            title="我的"
             key="my"
             selected={this.state.selectedTab === 'yellowTab'}
             onPress={() => {
@@ -141,7 +105,7 @@ export default class AppTab extends React.Component {
               });
             }}
           >
-            {this.renderContent('My')}
+            我的
           </TabBar.Item>
         </TabBar>
       </div>
