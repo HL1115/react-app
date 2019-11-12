@@ -20,10 +20,10 @@ export default class AppTab extends React.Component {
           <TabBar.Item
             title="首页"
             key="Life"
-            icon={<i style={{fontSize:22}} className='iconfont icon-home'></i>
+            icon={<i style={{fontSize:22,lineHeight:'22px'}} className='iconfont icon-home'></i>
             }
             selectedIcon={
-                <i style={{fontSize:22}} className='iconfont icon-wode'></i>
+                <i style={{fontSize:22,lineHeight:'22px'}} className='iconfont icon-wode'></i>
             }
             selected={this.state.selectedTab === 'home'}
             onPress={() => {

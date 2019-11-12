@@ -16,6 +16,7 @@ export default class AppHome extends Component {
                         <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                     ]}
                     >桔家</NavBar>
+                <i className='iconfont icon-home'></i>
                 <Tabs tabs={tabs}
                     initialPage={0}
                     onChange={(tab, index) => { console.log('onChange', index, tab); }}
